@@ -5,6 +5,7 @@
 //  Created by Michael Redig on 4/30/19.
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
+// swiftlint:disable todo
 
 import Foundation
 
@@ -16,27 +17,27 @@ public struct QuickOrderedSet<Type: Codable & Hashable> {
 		sequencedContents = []
 		contents = [:]
 	}
-	
+
 	func index(of object: Type) -> Int? {
 		if let index = contents[object] {
 			return index
 		}
 		return nil
 	}
-	
+
 	mutating func append(_ element: Type) {
 		if contents[element] != nil {
-			remove(element)			
+			remove(element)
 		}
 		contents[element] = contents.count
 		sequencedContents.append(element)
 	}
-	
+
 	mutating func remove(_ element: Type) {
 		guard let index = contents[element] else { return }
 		remove(at: index)
 	}
-	
+
 	mutating func remove(at index: Int) {
 //		guard sequencedContents.count > index else { return } // dno if this is a good idea or not
 		let objectAtIndex = sequencedContents[index]
@@ -46,11 +47,11 @@ public struct QuickOrderedSet<Type: Codable & Hashable> {
 			contents[sequencedContents[index]] = index
 		}
 	}
-	
+
 	func contains(_ element: Type) -> Bool {
 		return contents[element] != nil
 	}
-	
+
 	public subscript(index: Int) -> Type {
 		get {
 			return sequencedContents[index]
@@ -76,19 +77,16 @@ public struct QuickOrderedSet<Type: Codable & Hashable> {
 			contents[newValue] = index
 		}
 	}
-	
+
 	//TODO: Insert at
-	
 	public var count: Int {
 		return sequencedContents.count
 	}
-	
+
 	public var isEmpty: Bool {
 		return sequencedContents.isEmpty
 	}
-	
-	
-	
+
 	enum CodingKeys: String, CodingKey {
 		case sequencedContents
 		case contents
@@ -99,7 +97,7 @@ extension QuickOrderedSet: RandomAccessCollection {
 	public var startIndex: Int {
 		return 0
 	}
-	
+
 	public var endIndex: Int {
 		return sequencedContents.count
 	}
@@ -112,7 +110,7 @@ extension QuickOrderedSet: Codable {
 		try container.encode(sequencedContents, forKey: CodingKeys.sequencedContents)
 
 	}
-	
+
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		sequencedContents = try container.decode([Type].self, forKey: .sequencedContents)
@@ -127,5 +125,5 @@ extension QuickOrderedSet: CustomStringConvertible {
 	public var description: String {
 		return sequencedContents.description
 	}
-	
+
 }
