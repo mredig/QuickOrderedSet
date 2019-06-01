@@ -10,7 +10,7 @@
 import Foundation
 
 public struct QuickOrderedSet<Type: Codable & Hashable> {
-	private(set) var sequencedContents: [Type]
+	private(set) var sequencedContents: ContiguousArray<Type>
 	private(set) var contents: [Type: Int]
 
 	init() {
@@ -113,7 +113,8 @@ extension QuickOrderedSet: Codable {
 
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
-		sequencedContents = try container.decode([Type].self, forKey: .sequencedContents)
+		let tempContents = try container.decode([Type].self, forKey: .sequencedContents)
+		sequencedContents = ContiguousArray(tempContents)
 		contents = [:]
 		for (index, element) in sequencedContents.enumerated() {
 			contents[element] = index
