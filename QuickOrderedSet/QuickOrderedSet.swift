@@ -34,7 +34,7 @@ public struct QuickOrderedSet<Type: Hashable> {
 
 	/// Appends a new element *if it doesn't already exist in the ordered set*
 	public mutating func append(_ element: Type) {
-		if !contents.contains(element) {
+		if !contains(element) {
 			contents.insert(element)
 			sequencedContents.append(element)
 		}
@@ -42,7 +42,7 @@ public struct QuickOrderedSet<Type: Hashable> {
 
 	/// Removes an element if it's present in the ordered set
 	public mutating func remove(_ element: Type) {
-		guard contents.contains(element),
+		guard contains(element),
 			let index = sequencedContents.firstIndex(of: element) else { return }
 		remove(at: index)
 	}
@@ -74,7 +74,7 @@ public struct QuickOrderedSet<Type: Hashable> {
 			return sequencedContents[index]
 		}
 		set {
-			if contents.contains(newValue) {
+			if contains(newValue) {
 				if sequencedContents[index] == newValue {
 					sequencedContents[index] = newValue
 					contents.remove(sequencedContents[index])
@@ -91,7 +91,7 @@ public struct QuickOrderedSet<Type: Hashable> {
 
 	/// Inserts a new element at the index specified if it's not already a member
 	public mutating func insert(_ newElement: Type, at index: Int) {
-		if !contents.contains(newElement) {
+		if !contains(newElement) {
 			sequencedContents.insert(newElement, at: index)
 			contents.insert(newElement)
 		}
