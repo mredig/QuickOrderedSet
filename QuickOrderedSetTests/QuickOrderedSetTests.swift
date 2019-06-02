@@ -5,6 +5,7 @@
 //  Created by Michael Redig on 5/1/19.
 //  Copyright © 2019 Michael Redig. All rights reserved.
 //
+//swiftlint:disable type_body_length file_length
 
 import XCTest
 @testable import QuickOrderedSet
@@ -190,6 +191,359 @@ class QuickOrderedSetTests: XCTestCase {
 		for element in testingOrderedSet.sequencedContents {
 			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
 		}
+	}
 
+	func testInsertNewElementAtIndex() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let newValue = 15
+		testingOrderedSet.insert(newValue, at: 1)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		truthArray.insert(newValue, at: 1)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testInsertExistingElementAtIndex() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let existingValue = 5
+		testingOrderedSet.insert(existingValue, at: 1)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testReplaceNewElementAtIndex() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let newValue = 15
+		testingOrderedSet.replace(atIndex: 1, withElement: newValue)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		truthArray[1] = newValue
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testReplaceExistingElementAtIndex() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let existingValue = 5
+		testingOrderedSet.replace(atIndex: 1, withElement: existingValue)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testReplaceExistingOldElementWithNewElement() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let existingOld = 2
+		let newValue = 15
+		testingOrderedSet.replace(existingOld, withNewElement: newValue)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		let truthIndex = truthArray.firstIndex(of: existingOld)!
+		truthArray[truthIndex] = newValue
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testReplaceNonExistingOldElementWithNewElement() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let nonExistingOld = 16
+		let newValue = 15
+		testingOrderedSet.replace(nonExistingOld, withNewElement: newValue)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testReplaceExistingOldElementWithExistingElement() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let existingOld = 2
+		let existingValue = 5
+		testingOrderedSet.replace(existingOld, withNewElement: existingValue)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testReplaceNonExistingOldElementWithExistingElement() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let nonExistingOld = 16
+		let existingValue = 15
+		testingOrderedSet.replace(nonExistingOld, withNewElement: existingValue)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testSetNewElementAtInsideIndex() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let newValue = 15
+		testingOrderedSet.set(newValue, at: 1)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		truthArray[1] = newValue
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testSetNewElementAtEnd() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let newValue = 15
+		testingOrderedSet.set(newValue, at: testingOrderedSet.count)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		truthArray.append(newValue)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testSetExistingElementAtInsideIndex() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let existingValue = 5
+		testingOrderedSet.set(existingValue, at: 1)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testSetExistingElementAtEnd() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		let existingValue = 5
+		testingOrderedSet.set(existingValue, at: testingOrderedSet.count)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testExchangeElements() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		// run ordered set function, then test basic counts of its contents
+		let indexA = 3
+		let indexB = 8
+		testingOrderedSet.exchange(elementAt: indexA, withElementAt: indexB)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		// replicate what the function should do on the truthArray, then test that they match
+		truthArray.swapAt(indexA, indexB)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testMoveIndexToEnd() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		// run ordered set function, then test basic counts of its contents
+		let indexA = 0
+		let indexB = testingOrderedSet.count - 1
+		testingOrderedSet.move(elementAtIndex: indexA, to: indexB)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		// replicate what the function should do on the truthArray, then test that they match
+		let movedValue = truthArray[indexA]
+		truthArray.remove(at: indexA)
+		truthArray.insert(movedValue, at: indexB)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testMoveIndexToStart() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		// run ordered set function, then test basic counts of its contents
+		let indexA = testingOrderedSet.count - 1
+		let indexB = 0
+		testingOrderedSet.move(elementAtIndex: indexA, to: indexB)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		// replicate what the function should do on the truthArray, then test that they match
+		let movedValue = truthArray[indexA]
+		truthArray.remove(at: indexA)
+		truthArray.insert(movedValue, at: indexB)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testMoveIndexUpInMiddle() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		// run ordered set function, then test basic counts of its contents
+		let indexA = 3
+		let indexB = 8
+		testingOrderedSet.move(elementAtIndex: indexA, to: indexB)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		// replicate what the function should do on the truthArray, then test that they match
+		let movedValue = truthArray[indexA]
+		truthArray.remove(at: indexA)
+		truthArray.insert(movedValue, at: indexB)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testMoveIndexDownInMiddle() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		// run ordered set function, then test basic counts of its contents
+		let indexA = 8
+		let indexB = 3
+		testingOrderedSet.move(elementAtIndex: indexA, to: indexB)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		// replicate what the function should do on the truthArray, then test that they match
+		let movedValue = truthArray[indexA]
+		truthArray.remove(at: indexA)
+		truthArray.insert(movedValue, at: indexB)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testMoveToSameIndex() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		// run ordered set function, then test basic counts of its contents
+		let indexA = 5
+		let indexB = 5
+		testingOrderedSet.move(elementAtIndex: indexA, to: indexB)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		// replicate what the function should do on the truthArray, then test that they match
+		let movedValue = truthArray[indexA]
+		truthArray.remove(at: indexA)
+		truthArray.insert(movedValue, at: indexB)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testMoveElementToIndex() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		// run ordered set function, then test basic counts of its contents
+		let value = 5
+		let newIndex = 0
+		testingOrderedSet.move(value, to: newIndex)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		// replicate what the function should do on the truthArray, then test that they match
+		let oldIndex = truthArray.firstIndex(of: value)!
+		truthArray.remove(at: oldIndex)
+		truthArray.insert(value, at: newIndex)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
 	}
 }

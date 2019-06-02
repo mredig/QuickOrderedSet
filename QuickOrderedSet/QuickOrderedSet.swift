@@ -5,7 +5,7 @@
 //  Created by Michael Redig on 4/30/19.
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
-// swiftlint:disable todo
+// swiftlint:disable
 
 import Foundation
 
@@ -88,12 +88,74 @@ public struct QuickOrderedSet<Type: Hashable> {
 		}
 	}
 
-	//TODO: Insert at
-	//TODO: replace at
-	//TODO: replace element
-	//TODO: set at
-	//TODO: move to index
-	//TODO: exchange at index with index
+	/// Inserts a new element at the index specified if it's not already a member
+	public mutating func insert(_ newElement: Type, at index: Int) {
+		if !contents.contains(newElement) {
+			sequencedContents.insert(newElement, at: index)
+			contents.insert(newElement)
+		}
+	}
+
+	/// Replaces element at specified index with provided element, given the provided element is not already a memeber
+	public mutating func replace(atIndex index: Int, withElement element: Type) {
+		guard !contains(element) else { return }
+		let oldElement = sequencedContents[index]
+		sequencedContents[index] = element
+		contents.remove(oldElement)
+		contents.insert(element)
+	}
+
+	/**
+	Replaces a given element with a new element. Will only proceed if both the old
+	element is already a member and the new element is not.
+	*/
+	public mutating func replace(_ oldElement: Type, withNewElement newElement: Type) {
+		guard !contains(newElement), let index = index(of: oldElement) else { return }
+		replace(atIndex: index, withElement: newElement)
+	}
+
+	/// Appends or replaces the element at the specified index, if it isn't already a member.
+	public mutating func set(_ element: Type, at index: Int) {
+		guard !contains(element) else { return }
+		if index == sequencedContents.count {
+			//append
+			append(element)
+		} else {
+			//replace
+			replace(atIndex: index, withElement: element)
+		}
+	}
+
+	/// Exchanges element at the specified index with the element at the other index
+	public mutating func exchange(elementAt oldIndex: Int, withElementAt newIndex: Int) {
+		precondition(oldIndex < count)
+		precondition(newIndex < count)
+		sequencedContents.swapAt(oldIndex, newIndex)
+	}
+
+	/// Moves the element from one index to another
+	public mutating func move(elementAtIndex oldIndex: Int, to newIndex: Int) {
+		precondition(oldIndex < count)
+		precondition(newIndex < count)
+
+		let iterator: Int
+		if newIndex < oldIndex {
+			iterator = -1
+		} else {
+			iterator = 1
+		}
+
+		for currentIndex in stride(from: oldIndex, to: newIndex, by: iterator) {
+			exchange(elementAt: currentIndex, withElementAt: currentIndex + iterator)
+		}
+	}
+
+	/// Moves a given element to a new index, if it's a member
+	public mutating func move(_ element: Type, to index: Int) {
+		guard contains(element), let oldIndex = self.index(of: element) else { return }
+		move(elementAtIndex: oldIndex, to: index)
+	}
+
 	public var count: Int {
 		return sequencedContents.count
 	}
