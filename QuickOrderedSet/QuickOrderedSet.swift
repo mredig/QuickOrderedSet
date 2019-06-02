@@ -24,8 +24,9 @@ public struct QuickOrderedSet<Type: Hashable> {
 	}
 
 	/// Returns the index of the element, if it's included in the ordered set. Nil otherwise.
-	public func index(of object: Type) -> Int? {
-		if let index = sequencedContents.firstIndex(of: object) {
+	public func index(of element: Type) -> Int? {
+		guard contains(element) else { return nil }
+		if let index = sequencedContents.firstIndex(of: element) {
 			return index
 		}
 		return nil
