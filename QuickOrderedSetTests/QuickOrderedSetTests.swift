@@ -157,4 +157,39 @@ class QuickOrderedSetTests: XCTestCase {
 			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
 		}
 	}
+
+	func testCodable() {
+		let (testingOrderedSet, truthArray) = defaultValues()
+
+		let encoder = JSONEncoder()
+		var data = Data()
+		do {
+			data = try encoder.encode(testingOrderedSet)
+		} catch {
+			XCTAssert(false, "failed encoding: \(error)")
+		}
+
+		let str = String(data: data, encoding: .utf8)
+		print(str ?? "")
+
+		let decoder = JSONDecoder()
+		var wrappedDecodedSet: QuickOrderedSet<Int>?
+		do {
+			wrappedDecodedSet = try decoder.decode(QuickOrderedSet<Int>.self, from: data)
+		} catch {
+			XCTAssert(false, "failed decoding: \(error)")
+		}
+
+		guard let decodedSet = wrappedDecodedSet else { XCTAssert(false); return }
+		XCTAssert(decodedSet.contents.count == decodedSet.sequencedContents.count)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+		XCTAssert(Array(decodedSet.sequencedContents) == truthArray)
+		
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+
+	}
 }
