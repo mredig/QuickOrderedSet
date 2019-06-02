@@ -13,13 +13,18 @@ public struct QuickOrderedSet<Type: Hashable> {
 	private(set) var sequencedContents: ContiguousArray<Type>
 	private(set) var contents: Set<Type>
 
-	init() {
+	public init() {
 		sequencedContents = []
 		contents = Set<Type>()
 	}
 
+	public init(_ array: [Type]) {
+		self.init()
+		array.forEach { append($0) }
+	}
+
 	/// Returns the index of the element, if it's included in the ordered set. Nil otherwise.
-	func index(of object: Type) -> Int? {
+	public func index(of object: Type) -> Int? {
 		if let index = sequencedContents.firstIndex(of: object) {
 			return index
 		}
@@ -27,7 +32,7 @@ public struct QuickOrderedSet<Type: Hashable> {
 	}
 
 	/// Appends a new element *if it doesn't already exist in the ordered set*
-	mutating func append(_ element: Type) {
+	public mutating func append(_ element: Type) {
 		if !contents.contains(element) {
 			contents.insert(element)
 			sequencedContents.append(element)
@@ -35,14 +40,14 @@ public struct QuickOrderedSet<Type: Hashable> {
 	}
 
 	/// Removes an element if it's present in the ordered set
-	mutating func remove(_ element: Type) {
+	public mutating func remove(_ element: Type) {
 		guard contents.contains(element),
 			let index = sequencedContents.firstIndex(of: element) else { return }
 		remove(at: index)
 	}
 
 	/// Removes the element at the requested index. Crashes if index is out of bounds, however.
-	mutating func remove(at index: Int) {
+	public mutating func remove(at index: Int) {
 		precondition(sequencedContents.count > index, "Index '\(index)' out of bounds")
 		let objectAtIndex = sequencedContents[index]
 		contents.remove(objectAtIndex)
@@ -50,7 +55,7 @@ public struct QuickOrderedSet<Type: Hashable> {
 	}
 
 	/// Returns a Bool determining if an element is present in the ordered set
-	func contains(_ element: Type) -> Bool {
+	public func contains(_ element: Type) -> Bool {
 		return contents.contains(element)
 	}
 
@@ -103,7 +108,7 @@ public struct QuickOrderedSet<Type: Hashable> {
 	}
 }
 
-// MARK: Collection
+// MARK: - Collection
 extension QuickOrderedSet: Collection {
 	public func index(after i: Int) -> Int {
 		return sequencedContents.index(after: i)
@@ -143,5 +148,12 @@ extension QuickOrderedSet: Codable where Type: Codable {
 extension QuickOrderedSet: CustomStringConvertible {
 	public var description: String {
 		return sequencedContents.description
+	}
+}
+
+// MARK: - Expressible by Array Literal
+extension QuickOrderedSet: ExpressibleByArrayLiteral {
+	public init(arrayLiteral elements: Type...) {
+		self.init(elements)
 	}
 }
