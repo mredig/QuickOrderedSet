@@ -184,7 +184,7 @@ class QuickOrderedSetTests: XCTestCase {
 		XCTAssert(decodedSet.contents.count == decodedSet.sequencedContents.count)
 		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
 		XCTAssert(Array(decodedSet.sequencedContents) == truthArray)
-		
+
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
 		for element in testingOrderedSet.sequencedContents {
