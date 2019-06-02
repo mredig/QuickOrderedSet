@@ -9,7 +9,7 @@
 
 import Foundation
 
-public struct QuickOrderedSet<Type: Codable & Hashable> {
+public struct QuickOrderedSet<Type: Hashable> {
 	private(set) var sequencedContents: ContiguousArray<Type>
 	private(set) var contents: Set<Type>
 
@@ -103,6 +103,14 @@ public struct QuickOrderedSet<Type: Codable & Hashable> {
 	}
 }
 
+// MARK: Collection
+extension QuickOrderedSet: Collection {
+	public func index(after i: Int) -> Int {
+		return sequencedContents.index(after: i)
+	}
+}
+
+// MARK: - Random Access Collection
 extension QuickOrderedSet: RandomAccessCollection {
 	public var startIndex: Int {
 		return 0
@@ -113,7 +121,8 @@ extension QuickOrderedSet: RandomAccessCollection {
 	}
 }
 
-extension QuickOrderedSet: Codable {
+// MARK: - Codable
+extension QuickOrderedSet: Codable where Type: Codable {
 
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
@@ -130,6 +139,7 @@ extension QuickOrderedSet: Codable {
 	}
 }
 
+// MARK: - Custom String Convertible
 extension QuickOrderedSet: CustomStringConvertible {
 	public var description: String {
 		return sequencedContents.description

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		335D7D6622A3A67D005D5A20 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 335D7D6522A3A67D005D5A20 /* .swiftlint.yml */; };
 		33AAA8552279E554006A0EEF /* QuickOrderedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33AAA84B2279E554006A0EEF /* QuickOrderedSet.framework */; };
 		33AAA85A2279E554006A0EEF /* QuickOrderedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */; };
 		33AAA85C2279E554006A0EEF /* QuickOrderedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 33AAA84E2279E554006A0EEF /* QuickOrderedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		335D7D6522A3A67D005D5A20 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		33AAA84B2279E554006A0EEF /* QuickOrderedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuickOrderedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AAA84E2279E554006A0EEF /* QuickOrderedSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickOrderedSet.h; sourceTree = "<group>"; };
 		33AAA84F2279E554006A0EEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		33AAA8412279E554006A0EEF = {
 			isa = PBXGroup;
 			children = (
+				335D7D6522A3A67D005D5A20 /* .swiftlint.yml */,
 				33AAA84D2279E554006A0EEF /* QuickOrderedSet */,
 				33AAA8582279E554006A0EEF /* QuickOrderedSetTests */,
 				33AAA84C2279E554006A0EEF /* Products */,
@@ -182,6 +185,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				335D7D6622A3A67D005D5A20 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

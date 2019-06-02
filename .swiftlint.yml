@@ -1,0 +1,6 @@
+disabled_rules:
+
+identifier_name:
+  excluded: # excluded via string array
+    - id
+    - i
