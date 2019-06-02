@@ -395,7 +395,7 @@ class QuickOrderedSetTests: XCTestCase {
 		}
 	}
 
-	func testExchangeElements() {
+	func testExchangeElementsViaIndex() {
 		var (testingOrderedSet, truthArray) = defaultValues()
 
 		// run ordered set function, then test basic counts of its contents
@@ -405,6 +405,28 @@ class QuickOrderedSetTests: XCTestCase {
 		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
 
 		// replicate what the function should do on the truthArray, then test that they match
+		truthArray.swapAt(indexA, indexB)
+		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for element in testingOrderedSet.sequencedContents {
+			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testExchangeElements() {
+		var (testingOrderedSet, truthArray) = defaultValues()
+
+		// run ordered set function, then test basic counts of its contents
+		let valueA = 3
+		let valueB = 8
+		testingOrderedSet.exchange(valueA, with: valueB)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+
+		// replicate what the function should do on the truthArray, then test that they match
+		let indexA = truthArray.firstIndex(of: valueA)!
+		let indexB = truthArray.firstIndex(of: valueB)!
 		truthArray.swapAt(indexA, indexB)
 		XCTAssert(Array(testingOrderedSet.sequencedContents) == truthArray)
 

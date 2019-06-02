@@ -133,6 +133,14 @@ public struct QuickOrderedSet<Type: Hashable> {
 		sequencedContents.swapAt(oldIndex, newIndex)
 	}
 
+	/// Exchanges the first element with the second element in the index, if both elements are members
+	public mutating func exchange(_ elementA: Type, with elementB: Type) {
+		guard contains(elementA), contains(elementB),
+			let indexA = index(of: elementA),
+			let indexB = index(of: elementB) else { return }
+		exchange(elementAt: indexA, withElementAt: indexB)
+	}
+
 	/// Moves the element from one index to another
 	public mutating func move(elementAtIndex oldIndex: Int, to newIndex: Int) {
 		precondition(oldIndex < count)
