@@ -42,8 +42,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -58,8 +58,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -74,8 +74,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -91,8 +91,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -107,8 +107,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -124,8 +124,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -141,8 +141,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -154,8 +154,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -188,8 +188,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -205,8 +205,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -221,8 +221,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -238,8 +238,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -254,8 +254,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -273,8 +273,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -290,8 +290,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -307,8 +307,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -324,8 +324,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -341,8 +341,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -358,8 +358,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -374,8 +374,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -390,8 +390,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -410,8 +410,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -432,8 +432,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -454,8 +454,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -476,8 +476,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -498,8 +498,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -520,8 +520,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -542,8 +542,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 
@@ -564,8 +564,8 @@ class QuickOrderedSetTests: XCTestCase {
 
 		//should be run after every edit
 		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
-		for element in testingOrderedSet.sequencedContents {
-			XCTAssert(testingOrderedSet.contents.contains(element), "\(testingOrderedSet.contents)")
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
 		}
 	}
 }

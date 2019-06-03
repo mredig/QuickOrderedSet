@@ -11,11 +11,11 @@ import Foundation
 
 public struct QuickOrderedSet<Type: Hashable> {
 	private(set) var sequencedContents: ContiguousArray<Type>
-	private(set) var contents: Set<Type>
+	private(set) var contents: [Type: Int]
 
 	public init() {
 		sequencedContents = []
-		contents = Set<Type>()
+		contents = [Type: Int]()
 	}
 
 	public init(_ array: [Type]) {
@@ -26,16 +26,24 @@ public struct QuickOrderedSet<Type: Hashable> {
 	/// Returns the index of the element, if it's included in the ordered set. Nil otherwise.
 	public func index(of element: Type) -> Int? {
 		guard contains(element) else { return nil }
-		if let index = sequencedContents.firstIndex(of: element) {
-			return index
+		guard let proposedIndex = contents[element] else {
+			fatalError("Element not a member, despite just being confirmed as one.")
 		}
-		return nil
+		guard element == sequencedContents[proposedIndex] else {
+			print("index incorrectly cached - retrieving correct index")
+			if let index = sequencedContents.firstIndex(of: element) {
+				return index
+			}
+			return nil
+		}
+		return proposedIndex
 	}
 
 	/// Appends a new element *if it doesn't already exist in the ordered set*
 	public mutating func append(_ element: Type) {
 		if !contains(element) {
-			contents.insert(element)
+			// order matters here
+			contents[element] = sequencedContents.count
 			sequencedContents.append(element)
 		}
 	}
@@ -51,13 +59,14 @@ public struct QuickOrderedSet<Type: Hashable> {
 	public mutating func remove(at index: Int) {
 		precondition(sequencedContents.count > index, "Index '\(index)' out of bounds")
 		let objectAtIndex = sequencedContents[index]
-		contents.remove(objectAtIndex)
+		contents.removeValue(forKey: objectAtIndex)
 		sequencedContents.remove(at: index)
+		updateIndicies(in: index..<sequencedContents.count)
 	}
 
 	/// Returns a Bool determining if an element is present in the ordered set
 	public func contains(_ element: Type) -> Bool {
-		return contents.contains(element)
+		return contents[element] != nil
 	}
 
 	/**
@@ -77,14 +86,14 @@ public struct QuickOrderedSet<Type: Hashable> {
 			if contains(newValue) {
 				if sequencedContents[index] == newValue {
 					sequencedContents[index] = newValue
-					contents.remove(sequencedContents[index])
-					contents.insert(newValue)
+					contents.removeValue(forKey: newValue)
+					contents[newValue] = index
 				}
 			} else {
 				let oldValue = sequencedContents[index]
 				sequencedContents[index] = newValue
-				contents.insert(newValue)
-				contents.remove(oldValue)
+				contents.removeValue(forKey: oldValue)
+				contents[newValue] = index
 			}
 		}
 	}
@@ -93,7 +102,8 @@ public struct QuickOrderedSet<Type: Hashable> {
 	public mutating func insert(_ newElement: Type, at index: Int) {
 		if !contains(newElement) {
 			sequencedContents.insert(newElement, at: index)
-			contents.insert(newElement)
+			contents[newElement] = index
+			updateIndicies(in: index..<sequencedContents.count)
 		}
 	}
 
@@ -102,8 +112,8 @@ public struct QuickOrderedSet<Type: Hashable> {
 		guard !contains(element) else { return }
 		let oldElement = sequencedContents[index]
 		sequencedContents[index] = element
-		contents.remove(oldElement)
-		contents.insert(element)
+		contents.removeValue(forKey: oldElement)
+		contents[element] = index
 	}
 
 	/**
@@ -132,6 +142,8 @@ public struct QuickOrderedSet<Type: Hashable> {
 		precondition(oldIndex < count)
 		precondition(newIndex < count)
 		sequencedContents.swapAt(oldIndex, newIndex)
+		contents[sequencedContents[oldIndex]] = oldIndex
+		contents[sequencedContents[newIndex]] = newIndex
 	}
 
 	/// Exchanges the first element with the second element in the index, if both elements are members
@@ -209,8 +221,9 @@ extension QuickOrderedSet: Codable where Type: Codable {
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		let tempContents = try container.decode([Type].self, forKey: .sequencedContents)
-		sequencedContents = ContiguousArray(tempContents)
-		contents = Set(sequencedContents)
+//		sequencedContents = ContiguousArray(tempContents)
+//		contents = Set(sequencedContents)
+		self.init(tempContents)
 		precondition(contents.count == sequencedContents.count, "Decoded value not valid set")
 	}
 }
@@ -226,5 +239,14 @@ extension QuickOrderedSet: CustomStringConvertible {
 extension QuickOrderedSet: ExpressibleByArrayLiteral {
 	public init(arrayLiteral elements: Type...) {
 		self.init(elements)
+	}
+}
+
+// MARK: - Index Caching
+extension QuickOrderedSet {
+	private mutating func updateIndicies(in range: Range<Int>) {
+		for index in range {
+			contents[sequencedContents[index]] = index
+		}
 	}
 }
