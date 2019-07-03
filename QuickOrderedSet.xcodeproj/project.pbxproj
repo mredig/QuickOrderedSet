@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		335D7D6622A3A67D005D5A20 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 335D7D6522A3A67D005D5A20 /* .swiftlint.yml */; };
 		33AAA8552279E554006A0EEF /* QuickOrderedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33AAA84B2279E554006A0EEF /* QuickOrderedSet.framework */; };
-		33AAA85A2279E554006A0EEF /* QuickOrderedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */; };
 		33AAA85C2279E554006A0EEF /* QuickOrderedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 33AAA84E2279E554006A0EEF /* QuickOrderedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33AAA8662279E56A006A0EEF /* QuickOrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8652279E56A006A0EEF /* QuickOrderedSet.swift */; };
+		33BDD03A22CC66D60007ABF4 /* QuickOrderedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33BDD03122CC66D60007ABF4 /* QuickOrderedSet.framework */; };
+		33BDD04122CC66D60007ABF4 /* QuickOrderedSet_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 33BDD03322CC66D60007ABF4 /* QuickOrderedSet_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		33BDD04822CC66E90007ABF4 /* QuickOrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8652279E56A006A0EEF /* QuickOrderedSet.swift */; };
+		33BDD04C22CC67350007ABF4 /* QuickOrderedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */; };
+		33BDD04D22CC67360007ABF4 /* QuickOrderedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,6 +25,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 33AAA84A2279E554006A0EEF;
 			remoteInfo = QuickOrderedSet;
+		};
+		33BDD03B22CC66D60007ABF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33AAA8422279E554006A0EEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33BDD03022CC66D60007ABF4;
+			remoteInfo = "QuickOrderedSet-macOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -33,6 +44,11 @@
 		33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickOrderedSetTests.swift; sourceTree = "<group>"; };
 		33AAA85B2279E554006A0EEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33AAA8652279E56A006A0EEF /* QuickOrderedSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickOrderedSet.swift; sourceTree = "<group>"; };
+		33BDD03122CC66D60007ABF4 /* QuickOrderedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuickOrderedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33BDD03322CC66D60007ABF4 /* QuickOrderedSet_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickOrderedSet_macOS.h; sourceTree = "<group>"; };
+		33BDD03422CC66D60007ABF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33BDD03922CC66D60007ABF4 /* QuickOrderedSet-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "QuickOrderedSet-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33BDD04022CC66D60007ABF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +67,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		33BDD02E22CC66D60007ABF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33BDD03622CC66D60007ABF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33BDD03A22CC66D60007ABF4 /* QuickOrderedSet.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -58,7 +89,10 @@
 			isa = PBXGroup;
 			children = (
 				335D7D6522A3A67D005D5A20 /* .swiftlint.yml */,
+				33BDD04922CC670E0007ABF4 /* QuickOrderedSet Shared */,
 				33AAA84D2279E554006A0EEF /* QuickOrderedSet */,
+				33BDD03222CC66D60007ABF4 /* QuickOrderedSet-macOS */,
+				33BDD03D22CC66D60007ABF4 /* QuickOrderedSet-macOSTests */,
 				33AAA8582279E554006A0EEF /* QuickOrderedSetTests */,
 				33AAA84C2279E554006A0EEF /* Products */,
 			);
@@ -69,6 +103,8 @@
 			children = (
 				33AAA84B2279E554006A0EEF /* QuickOrderedSet.framework */,
 				33AAA8542279E554006A0EEF /* QuickOrderedSetTests.xctest */,
+				33BDD03122CC66D60007ABF4 /* QuickOrderedSet.framework */,
+				33BDD03922CC66D60007ABF4 /* QuickOrderedSet-macOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				33AAA84E2279E554006A0EEF /* QuickOrderedSet.h */,
-				33AAA8652279E56A006A0EEF /* QuickOrderedSet.swift */,
 				33AAA84F2279E554006A0EEF /* Info.plist */,
 			);
 			path = QuickOrderedSet;
@@ -86,10 +121,35 @@
 		33AAA8582279E554006A0EEF /* QuickOrderedSetTests */ = {
 			isa = PBXGroup;
 			children = (
-				33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */,
 				33AAA85B2279E554006A0EEF /* Info.plist */,
 			);
 			path = QuickOrderedSetTests;
+			sourceTree = "<group>";
+		};
+		33BDD03222CC66D60007ABF4 /* QuickOrderedSet-macOS */ = {
+			isa = PBXGroup;
+			children = (
+				33BDD03322CC66D60007ABF4 /* QuickOrderedSet_macOS.h */,
+				33BDD03422CC66D60007ABF4 /* Info.plist */,
+			);
+			path = "QuickOrderedSet-macOS";
+			sourceTree = "<group>";
+		};
+		33BDD03D22CC66D60007ABF4 /* QuickOrderedSet-macOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				33BDD04022CC66D60007ABF4 /* Info.plist */,
+			);
+			path = "QuickOrderedSet-macOSTests";
+			sourceTree = "<group>";
+		};
+		33BDD04922CC670E0007ABF4 /* QuickOrderedSet Shared */ = {
+			isa = PBXGroup;
+			children = (
+				33AAA8652279E56A006A0EEF /* QuickOrderedSet.swift */,
+				33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */,
+			);
+			path = "QuickOrderedSet Shared";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,6 +160,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				33AAA85C2279E554006A0EEF /* QuickOrderedSet.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33BDD02C22CC66D60007ABF4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33BDD04122CC66D60007ABF4 /* QuickOrderedSet_macOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +211,42 @@
 			productReference = 33AAA8542279E554006A0EEF /* QuickOrderedSetTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		33BDD03022CC66D60007ABF4 /* QuickOrderedSet-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33BDD04622CC66D60007ABF4 /* Build configuration list for PBXNativeTarget "QuickOrderedSet-macOS" */;
+			buildPhases = (
+				33BDD02C22CC66D60007ABF4 /* Headers */,
+				33BDD02D22CC66D60007ABF4 /* Sources */,
+				33BDD02E22CC66D60007ABF4 /* Frameworks */,
+				33BDD02F22CC66D60007ABF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "QuickOrderedSet-macOS";
+			productName = "QuickOrderedSet-macOS";
+			productReference = 33BDD03122CC66D60007ABF4 /* QuickOrderedSet.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		33BDD03822CC66D60007ABF4 /* QuickOrderedSet-macOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33BDD04722CC66D60007ABF4 /* Build configuration list for PBXNativeTarget "QuickOrderedSet-macOSTests" */;
+			buildPhases = (
+				33BDD03522CC66D60007ABF4 /* Sources */,
+				33BDD03622CC66D60007ABF4 /* Frameworks */,
+				33BDD03722CC66D60007ABF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				33BDD03C22CC66D60007ABF4 /* PBXTargetDependency */,
+			);
+			name = "QuickOrderedSet-macOSTests";
+			productName = "QuickOrderedSet-macOSTests";
+			productReference = 33BDD03922CC66D60007ABF4 /* QuickOrderedSet-macOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -158,6 +262,12 @@
 						LastSwiftMigration = 1020;
 					};
 					33AAA8532279E554006A0EEF = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					33BDD03022CC66D60007ABF4 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					33BDD03822CC66D60007ABF4 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
@@ -176,6 +286,8 @@
 			targets = (
 				33AAA84A2279E554006A0EEF /* QuickOrderedSet */,
 				33AAA8532279E554006A0EEF /* QuickOrderedSetTests */,
+				33BDD03022CC66D60007ABF4 /* QuickOrderedSet-macOS */,
+				33BDD03822CC66D60007ABF4 /* QuickOrderedSet-macOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -190,6 +302,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		33AAA8522279E554006A0EEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33BDD02F22CC66D60007ABF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33BDD03722CC66D60007ABF4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,7 +358,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33AAA85A2279E554006A0EEF /* QuickOrderedSetTests.swift in Sources */,
+				33BDD04C22CC67350007ABF4 /* QuickOrderedSetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33BDD02D22CC66D60007ABF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33BDD04822CC66E90007ABF4 /* QuickOrderedSet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33BDD03522CC66D60007ABF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33BDD04D22CC67360007ABF4 /* QuickOrderedSetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +385,11 @@
 			isa = PBXTargetDependency;
 			target = 33AAA84A2279E554006A0EEF /* QuickOrderedSet */;
 			targetProxy = 33AAA8562279E554006A0EEF /* PBXContainerItemProxy */;
+		};
+		33BDD03C22CC66D60007ABF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33BDD03022CC66D60007ABF4 /* QuickOrderedSet-macOS */;
+			targetProxy = 33BDD03B22CC66D60007ABF4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -462,6 +609,108 @@
 			};
 			name = Release;
 		};
+		33BDD04222CC66D60007ABF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = L5UZAT7KA9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "QuickOrderedSet-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.redeggproductions.QuickOrderedSet-macOS";
+				PRODUCT_MODULE_NAME = QuickOrderedSet;
+				PRODUCT_NAME = QuickOrderedSet;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		33BDD04322CC66D60007ABF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = L5UZAT7KA9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "QuickOrderedSet-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.redeggproductions.QuickOrderedSet-macOS";
+				PRODUCT_MODULE_NAME = QuickOrderedSet;
+				PRODUCT_NAME = QuickOrderedSet;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		33BDD04422CC66D60007ABF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = L5UZAT7KA9;
+				INFOPLIST_FILE = "QuickOrderedSet-macOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.redeggproductions.QuickOrderedSet-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		33BDD04522CC66D60007ABF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = L5UZAT7KA9;
+				INFOPLIST_FILE = "QuickOrderedSet-macOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.redeggproductions.QuickOrderedSet-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -488,6 +737,24 @@
 			buildConfigurations = (
 				33AAA8632279E554006A0EEF /* Debug */,
 				33AAA8642279E554006A0EEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33BDD04622CC66D60007ABF4 /* Build configuration list for PBXNativeTarget "QuickOrderedSet-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33BDD04222CC66D60007ABF4 /* Debug */,
+				33BDD04322CC66D60007ABF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33BDD04722CC66D60007ABF4 /* Build configuration list for PBXNativeTarget "QuickOrderedSet-macOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33BDD04422CC66D60007ABF4 /* Debug */,
+				33BDD04522CC66D60007ABF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
