@@ -244,6 +244,13 @@ extension QuickOrderedSet: CustomStringConvertible {
 	}
 }
 
+// MARK: - Custom Debug String Convertible
+extension QuickOrderedSet: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		sequencedContents.debugDescription
+	}
+}
+
 // MARK: - Expressible by Array Literal
 extension QuickOrderedSet: ExpressibleByArrayLiteral {
 	public init(arrayLiteral elements: Type...) {
