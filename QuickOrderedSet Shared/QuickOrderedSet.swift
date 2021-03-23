@@ -3,7 +3,7 @@
 //  Reading List
 //
 //  Created by Michael Redig on 4/30/19.
-//  Copyright © 2019 Lambda School. All rights reserved.
+//  Copyright © 2019 Michael Redig. All rights reserved.
 //
 // swiftlint:disable
 
