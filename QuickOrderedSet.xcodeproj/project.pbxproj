@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		335D7D6622A3A67D005D5A20 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 335D7D6522A3A67D005D5A20 /* .swiftlint.yml */; };
+		33A8C2E526096B2D00F47C1B /* QuickOrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8C2E426096B2800F47C1B /* QuickOrderedSet.swift */; };
+		33A8C2EA26096B2E00F47C1B /* QuickOrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8C2E426096B2800F47C1B /* QuickOrderedSet.swift */; };
+		33A8C2F526096B6B00F47C1B /* QuickOrderedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8C2F426096B6B00F47C1B /* QuickOrderedSetTests.swift */; };
+		33A8C2F626096B6B00F47C1B /* QuickOrderedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8C2F426096B6B00F47C1B /* QuickOrderedSetTests.swift */; };
 		33AAA8552279E554006A0EEF /* QuickOrderedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33AAA84B2279E554006A0EEF /* QuickOrderedSet.framework */; };
 		33AAA85C2279E554006A0EEF /* QuickOrderedSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 33AAA84E2279E554006A0EEF /* QuickOrderedSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		33AAA8662279E56A006A0EEF /* QuickOrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8652279E56A006A0EEF /* QuickOrderedSet.swift */; };
 		33BDD03A22CC66D60007ABF4 /* QuickOrderedSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33BDD03122CC66D60007ABF4 /* QuickOrderedSet.framework */; };
 		33BDD04122CC66D60007ABF4 /* QuickOrderedSet_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 33BDD03322CC66D60007ABF4 /* QuickOrderedSet_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		33BDD04822CC66E90007ABF4 /* QuickOrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8652279E56A006A0EEF /* QuickOrderedSet.swift */; };
-		33BDD04C22CC67350007ABF4 /* QuickOrderedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */; };
-		33BDD04D22CC67360007ABF4 /* QuickOrderedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +37,13 @@
 
 /* Begin PBXFileReference section */
 		335D7D6522A3A67D005D5A20 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		33A8C2E426096B2800F47C1B /* QuickOrderedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickOrderedSet.swift; sourceTree = "<group>"; };
+		33A8C2F426096B6B00F47C1B /* QuickOrderedSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickOrderedSetTests.swift; path = Tests/QuickOrderedSetTests/QuickOrderedSetTests.swift; sourceTree = SOURCE_ROOT; };
 		33AAA84B2279E554006A0EEF /* QuickOrderedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuickOrderedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AAA84E2279E554006A0EEF /* QuickOrderedSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickOrderedSet.h; sourceTree = "<group>"; };
 		33AAA84F2279E554006A0EEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33AAA8542279E554006A0EEF /* QuickOrderedSetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickOrderedSetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickOrderedSetTests.swift; sourceTree = "<group>"; };
 		33AAA85B2279E554006A0EEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33AAA8652279E56A006A0EEF /* QuickOrderedSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickOrderedSet.swift; sourceTree = "<group>"; };
 		33BDD03122CC66D60007ABF4 /* QuickOrderedSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuickOrderedSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33BDD03322CC66D60007ABF4 /* QuickOrderedSet_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickOrderedSet_macOS.h; sourceTree = "<group>"; };
 		33BDD03422CC66D60007ABF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,13 +85,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33A8C2E226096B2800F47C1B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				33A8C2E326096B2800F47C1B /* QuickOrderedSet */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		33A8C2E326096B2800F47C1B /* QuickOrderedSet */ = {
+			isa = PBXGroup;
+			children = (
+				33A8C2E426096B2800F47C1B /* QuickOrderedSet.swift */,
+			);
+			path = QuickOrderedSet;
+			sourceTree = "<group>";
+		};
+		33A8C2EF26096B4700F47C1B /* SharedTests */ = {
+			isa = PBXGroup;
+			children = (
+				33A8C2F426096B6B00F47C1B /* QuickOrderedSetTests.swift */,
+			);
+			path = SharedTests;
+			sourceTree = "<group>";
+		};
 		33AAA8412279E554006A0EEF = {
 			isa = PBXGroup;
 			children = (
 				335D7D6522A3A67D005D5A20 /* .swiftlint.yml */,
-				33BDD04922CC670E0007ABF4 /* QuickOrderedSet Shared */,
+				33A8C2E226096B2800F47C1B /* Sources */,
 				33AAA84D2279E554006A0EEF /* QuickOrderedSet */,
 				33BDD03222CC66D60007ABF4 /* QuickOrderedSet-macOS */,
+				33A8C2EF26096B4700F47C1B /* SharedTests */,
 				33BDD03D22CC66D60007ABF4 /* QuickOrderedSet-macOSTests */,
 				33AAA8582279E554006A0EEF /* QuickOrderedSetTests */,
 				33AAA84C2279E554006A0EEF /* Products */,
@@ -141,15 +166,6 @@
 				33BDD04022CC66D60007ABF4 /* Info.plist */,
 			);
 			path = "QuickOrderedSet-macOSTests";
-			sourceTree = "<group>";
-		};
-		33BDD04922CC670E0007ABF4 /* QuickOrderedSet Shared */ = {
-			isa = PBXGroup;
-			children = (
-				33AAA8652279E56A006A0EEF /* QuickOrderedSet.swift */,
-				33AAA8592279E554006A0EEF /* QuickOrderedSetTests.swift */,
-			);
-			path = "QuickOrderedSet Shared";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,12 +279,14 @@
 					};
 					33AAA8532279E554006A0EEF = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1240;
 					};
 					33BDD03022CC66D60007ABF4 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
 					33BDD03822CC66D60007ABF4 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -350,7 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33AAA8662279E56A006A0EEF /* QuickOrderedSet.swift in Sources */,
+				33A8C2EA26096B2E00F47C1B /* QuickOrderedSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33BDD04C22CC67350007ABF4 /* QuickOrderedSetTests.swift in Sources */,
+				33A8C2F526096B6B00F47C1B /* QuickOrderedSetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33BDD04822CC66E90007ABF4 /* QuickOrderedSet.swift in Sources */,
+				33A8C2E526096B2D00F47C1B /* QuickOrderedSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33BDD04D22CC67360007ABF4 /* QuickOrderedSetTests.swift in Sources */,
+				33A8C2F626096B6B00F47C1B /* QuickOrderedSetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +593,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L5UZAT7KA9;
 				INFOPLIST_FILE = QuickOrderedSetTests/Info.plist;
@@ -585,6 +604,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.redeggproductions.QuickOrderedSetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -594,6 +614,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L5UZAT7KA9;
 				INFOPLIST_FILE = QuickOrderedSetTests/Info.plist;
@@ -671,6 +692,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -685,6 +707,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.redeggproductions.QuickOrderedSet-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -693,6 +716,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
