@@ -29,7 +29,9 @@ public struct QuickOrderedSet<Type: Hashable> {
 		guard let proposedIndex = contents[element] else {
 			fatalError("Element not a member, despite just being confirmed as one.")
 		}
-		guard element == sequencedContents[proposedIndex] else {
+		guard
+			element == sequencedContents[proposedIndex]
+		else {
 			print("index incorrectly cached - retrieving correct index")
 			if let index = sequencedContents.firstIndex(of: element) {
 				return index
@@ -50,8 +52,11 @@ public struct QuickOrderedSet<Type: Hashable> {
 
 	/// Removes an element if it's present in the ordered set
 	public mutating func remove(_ element: Type) {
-		guard contains(element),
-			let index = sequencedContents.firstIndex(of: element) else { return }
+		guard
+			contains(element),
+			let index = sequencedContents.firstIndex(of: element)
+		else { return }
+
 		remove(at: index)
 	}
 
@@ -121,7 +126,11 @@ public struct QuickOrderedSet<Type: Hashable> {
 	element is already a member and the new element is not.
 	*/
 	public mutating func replace(_ oldElement: Type, withNewElement newElement: Type) {
-		guard !contains(newElement), let index = index(of: oldElement) else { return }
+		guard
+			contains(newElement) == false,
+			let index = index(of: oldElement)
+		else { return }
+
 		replace(atIndex: index, withElement: newElement)
 	}
 
@@ -148,9 +157,12 @@ public struct QuickOrderedSet<Type: Hashable> {
 
 	/// Exchanges the first element with the second element in the index, if both elements are members
 	public mutating func exchange(_ elementA: Type, with elementB: Type) {
-		guard contains(elementA), contains(elementB),
+		guard
+			contains(elementA), contains(elementB),
 			let indexA = index(of: elementA),
-			let indexB = index(of: elementB) else { return }
+			let indexB = index(of: elementB)
+		else { return }
+
 		exchange(elementAt: indexA, withElementAt: indexB)
 	}
 
@@ -173,17 +185,17 @@ public struct QuickOrderedSet<Type: Hashable> {
 
 	/// Moves a given element to a new index, if it's a member
 	public mutating func move(_ element: Type, to index: Int) {
-		guard contains(element), let oldIndex = self.index(of: element) else { return }
+		guard
+			contains(element),
+			let oldIndex = self.index(of: element)
+		else { return }
+
 		move(elementAtIndex: oldIndex, to: index)
 	}
 
-	public var count: Int {
-		return sequencedContents.count
-	}
+	public var count: Int { sequencedContents.count }
 
-	public var isEmpty: Bool {
-		return sequencedContents.isEmpty
-	}
+	public var isEmpty: Bool { sequencedContents.isEmpty }
 
 	enum CodingKeys: String, CodingKey {
 		case sequencedContents
@@ -200,13 +212,9 @@ extension QuickOrderedSet: Collection {
 
 // MARK: - Random Access Collection
 extension QuickOrderedSet: RandomAccessCollection {
-	public var startIndex: Int {
-		return 0
-	}
+	public var startIndex: Int { 0 }
 
-	public var endIndex: Int {
-		return sequencedContents.count
-	}
+	public var endIndex: Int { sequencedContents.count }
 }
 
 // MARK: - Codable
@@ -231,7 +239,7 @@ extension QuickOrderedSet: Codable where Type: Codable {
 // MARK: - Custom String Convertible
 extension QuickOrderedSet: CustomStringConvertible {
 	public var description: String {
-		return sequencedContents.description
+		sequencedContents.description
 	}
 }
 
