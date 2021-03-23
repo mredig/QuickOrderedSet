@@ -9,7 +9,8 @@
 
 import Foundation
 
-public struct QuickOrderedSet<Type: Hashable> {
+public struct QuickOrderedSet<Type: Hashable>: RawRepresentable {
+	public var rawValue: ContiguousArray<Type> { sequencedContents }
 	private(set) var sequencedContents: ContiguousArray<Type>
 	private(set) var contents: [Type: Int]
 
@@ -19,8 +20,16 @@ public struct QuickOrderedSet<Type: Hashable> {
 	}
 
 	public init(_ array: [Type]) {
+		self.init(collection: array)
+	}
+
+	public init?(rawValue: ContiguousArray<Type>) {
+		self.init(collection: rawValue)
+	}
+
+	public init<CollectionType: Collection>(collection: CollectionType) where CollectionType.Element == Type {
 		self.init()
-		array.forEach { append($0) }
+		collection.forEach { append($0) }
 	}
 
 	/// Returns the index of the element, if it's included in the ordered set. Nil otherwise.
@@ -221,14 +230,15 @@ extension QuickOrderedSet: RandomAccessCollection {
 extension QuickOrderedSet: Codable where Type: Codable {
 
 	public func encode(to encoder: Encoder) throws {
-		var container = encoder.container(keyedBy: CodingKeys.self)
-		try container.encode(sequencedContents, forKey: CodingKeys.sequencedContents)
+		var container = encoder.singleValueContainer()
+		try container.encode(sequencedContents)
 	}
 
+	/// Will automatically deduplicate source.
 	public init(from decoder: Decoder) throws {
-		let container = try decoder.container(keyedBy: CodingKeys.self)
-		let tempContents = try container.decode([Type].self, forKey: .sequencedContents)
-		self.init(tempContents)
+		let container = try decoder.singleValueContainer()
+		let tempContents = try container.decode([Type].self)
+		self.init(collection: tempContents)
 		guard contents.count == sequencedContents.count else { throw QuickOrderedSetError.decodedArrayNotValidForSet }
 	}
 
@@ -254,7 +264,7 @@ extension QuickOrderedSet: CustomDebugStringConvertible {
 // MARK: - Expressible by Array Literal
 extension QuickOrderedSet: ExpressibleByArrayLiteral {
 	public init(arrayLiteral elements: Type...) {
-		self.init(elements)
+		self.init(collection: elements)
 	}
 }
 

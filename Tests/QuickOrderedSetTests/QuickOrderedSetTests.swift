@@ -159,29 +159,41 @@ class QuickOrderedSetTests: XCTestCase {
 		}
 	}
 
-	func testCodable() {
+	func testCodableFromSet() throws {
 		let (testingOrderedSet, truthArray) = defaultValues()
 
 		let encoder = JSONEncoder()
-		var data = Data()
-		do {
-			data = try encoder.encode(testingOrderedSet)
-		} catch {
-			XCTAssert(false, "failed encoding: \(error)")
-		}
+		let dataFromSet = try encoder.encode(testingOrderedSet)
 
-		let str = String(data: data, encoding: .utf8)
+		let str = String(data: dataFromSet, encoding: .utf8)
 		print(str ?? "")
 
 		let decoder = JSONDecoder()
-		var wrappedDecodedSet: QuickOrderedSet<Int>?
-		do {
-			wrappedDecodedSet = try decoder.decode(QuickOrderedSet<Int>.self, from: data)
-		} catch {
-			XCTAssert(false, "failed decoding: \(error)")
-		}
+		let decodedSet = try decoder.decode(QuickOrderedSet<Int>.self, from: dataFromSet)
 
-		guard let decodedSet = wrappedDecodedSet else { XCTAssert(false); return }
+		XCTAssert(decodedSet.contents.count == decodedSet.sequencedContents.count)
+		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
+		XCTAssert(Array(decodedSet.sequencedContents) == truthArray)
+
+		//should be run after every edit
+		XCTAssert(testingOrderedSet.sequencedContents.count == testingOrderedSet.contents.count)
+		for (index, element) in testingOrderedSet.sequencedContents.enumerated() {
+			XCTAssert(testingOrderedSet.contents[element] == index, "\(testingOrderedSet.contents)")
+		}
+	}
+
+	func testCodableFromArray() throws {
+		let (testingOrderedSet, truthArray) = defaultValues()
+
+		let encoder = JSONEncoder()
+		let dataFromArray = try encoder.encode(truthArray)
+
+		let str = String(data: dataFromArray, encoding: .utf8)
+		print(str ?? "")
+
+		let decoder = JSONDecoder()
+		let decodedSet = try decoder.decode(QuickOrderedSet<Int>.self, from: dataFromArray)
+
 		XCTAssert(decodedSet.contents.count == decodedSet.sequencedContents.count)
 		XCTAssert(testingOrderedSet.contents.count == testingOrderedSet.sequencedContents.count)
 		XCTAssert(Array(decodedSet.sequencedContents) == truthArray)
