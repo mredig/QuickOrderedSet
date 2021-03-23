@@ -223,16 +223,17 @@ extension QuickOrderedSet: Codable where Type: Codable {
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(sequencedContents, forKey: CodingKeys.sequencedContents)
-
 	}
 
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		let tempContents = try container.decode([Type].self, forKey: .sequencedContents)
-//		sequencedContents = ContiguousArray(tempContents)
-//		contents = Set(sequencedContents)
 		self.init(tempContents)
-		precondition(contents.count == sequencedContents.count, "Decoded value not valid set")
+		guard contents.count == sequencedContents.count else { throw QuickOrderedSetError.decodedArrayNotValidForSet }
+	}
+
+	enum QuickOrderedSetError: Error {
+		case decodedArrayNotValidForSet
 	}
 }
 
